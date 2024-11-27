@@ -35,6 +35,7 @@ After the encryption, we now have 2 encrypted file, **ofb_message.enc** and **ct
 xxd ofb_message.enc && xxd ctr_message.enc
 ```
 ![Encrypted contents](./images/contents.png)
+<br>
 From this we can clearly see that the first 16 bytes (128 bits) are identical but the rest is diffirent
 
 ## 2. Corrupt the enctypted files
@@ -56,6 +57,7 @@ xxd ctr_message_corrupted.enc
 xxd ctr_message.enc
 ```
 ![Corrupted_file](./images/flipped.png)
+<br>
 We can see the different is in the first byte: e7 (1110 0111) and e3 (1110 0011)
 <br><br>
 **Now we can do the same with the ofb_message.enc.**
