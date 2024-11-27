@@ -88,5 +88,7 @@ cat ofb_decrypted.txt
 cat ctr_decrypted.txt
 ```
 ![Decrypted_contents](./images/decrypted.png)
+<br>
+The first letter, got corrupted while the remaining is still intact
 ### Conclusion
 Both CTR and OFB in this case works the same, only the byte containing the corruption is not recovered, however, the remaining is still intact and so is the 16-byte block containing the corruption.
