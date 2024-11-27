@@ -50,8 +50,8 @@ Now we will copy the remaining content in **ctr_message.enc** to **ctr_message_c
 ```sh
 dd if=ctr_message.enc of=ctr_message_corrupted.enc bs=1 skip=1 seek=1 conv=notrunc
 ```
-*We copy but skip the first byte since it has been copied in the previous step.*
-Verify if the encypted file is handled correctly using xxd.
+*We copy but skip the first byte since it has been copied in the previous step.* <br>
+### Step 3, Verify if the encypted file is handled correctly using xxd.
 ```sh
 xxd ctr_message_corrupted.enc
 ```
