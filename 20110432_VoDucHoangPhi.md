@@ -62,7 +62,7 @@ xxd ctr_message.enc
 <br>
 We can see the different is in the first byte: e7 (1110 0111) and e3 (1110 0011)
 <br><br>
-**Now we can do the same with the ofb_message.enc.**
+### Repeat with ofb_message.enc.
 ```sh
 printf "\x$(printf '%02x' $((0x$(dd if=ofb_message.enc bs=1 count=1 2>/dev/null | xxd -p) ^ 0x04)))" | dd of=ofb_message_corrupted.enc bs=1 count=1 conv=notrunc
 ```
