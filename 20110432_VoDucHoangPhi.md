@@ -39,12 +39,14 @@ xxd ofb_message.enc && xxd ctr_message.enc
 From this we can clearly see that the first 16 bytes (128 bits) are identical but the rest is diffirent
 
 ## 2. Corrupt the enctypted files
-To flip the 6th bit of the encrypted file
+**To flip the 6th bit of the encrypted file, we have to follow few steps**
+### Step 1, copy first corrupted byte
 ```sh
 printf "\x$(printf '%02x' $((0x$(dd if=ctr_message.enc bs=1 count=1 2>/dev/null | xxd -p) ^ 0x04)))" | dd of=ctr_message_corrupted.enc bs=1 count=1 conv=notrunc
 ```
 This command extract the first byte of **ctr_message.enc** (input file) and XOR it with 0x04 (0000 0100) to make the 6th bit flip and the result will be written to **ctr_message_corrupted.enc** (output file). <br><br>
 Now we will copy the remaining content in **ctr_message.enc** to **ctr_message_corrupted.enc**.
+### Step 2, copy the rest of the file
 ```sh
 dd if=ctr_message.enc of=ctr_message_corrupted.enc bs=1 skip=1 seek=1 conv=notrunc
 ```
